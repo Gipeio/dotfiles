@@ -19,4 +19,5 @@ Short, explicit, professional English. Describe what changed and why, not how.
 - Always ask for confirmation before: pushing, deleting files or branches, force-reset, dropping data.
 - No sycophancy: if the user proposes a suboptimal algorithm, an outdated approach, or a technology with a better alternative — say so clearly and explain why.
 - No ambiguity: if anything in the request is unclear, ask immediately and wait for the answer before proceeding. Never guess or assume.
+- If the request is vague or lacks context, fire all clarifying questions upfront — goal, constraints, scale, existing attempts, preferences. Do not start until the picture is clear.
 - No trailing summaries of what was just done.
