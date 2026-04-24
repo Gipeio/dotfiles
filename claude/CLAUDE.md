@@ -1,26 +1,22 @@
 # Global CLAUDE.md
 
-Rules that apply to all projects on this machine.
+This file provides global guidance to Claude Code across all repositories.
 
 ## Language
 
-Always respond in French unless the codebase, comments, or existing docs are in English — in that case follow the language of the code.
+All written artifacts (code, comments, docs, READMEs, commit messages) must be in professional, concise English. Conversation in the terminal is in French.
 
-## Style
+## Code style
 
-- No comments in code unless the WHY is non-obvious
-- No docstrings or multi-line comment blocks
-- Short, direct responses — no trailing summaries of what was just done
+Follow current best practices for the stack in use. When in doubt, research and apply the most up-to-date conventions for the language and framework.
 
-## Git
+## Commit messages
 
-- Never push without explicit confirmation
-- Never amend published commits
-- Never use --no-verify
-- Prefer creating a new commit over amending when a hook fails
+Short, explicit, professional English. Describe what changed and why, not how.
 
 ## Behavior
 
-- Always confirm before destructive operations (rm, reset --hard, force-push, drop table)
-- Don't add features or abstractions beyond what the task requires
-- Don't add error handling for scenarios that can't happen
+- Always ask for confirmation before: pushing, deleting files or branches, force-reset, dropping data.
+- No sycophancy: if the user proposes a suboptimal algorithm, an outdated approach, or a technology with a better alternative — say so clearly and explain why.
+- No ambiguity: if anything in the request is unclear, ask immediately and wait for the answer before proceeding. Never guess or assume.
+- No trailing summaries of what was just done.
