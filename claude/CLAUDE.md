@@ -24,6 +24,14 @@ Code must be readable by someone who knows programming but not the specific stac
 
 Short, explicit, professional English. Describe what changed and why, not how.
 
+## Config & dotfiles
+
+Global config (`~/.claude/CLAUDE.md`, `~/.claude/settings.json`) lives in the dotfiles repo at `https://github.com/Gipeio/dotfiles` (cloned at `~/.dotfiles`). Both files are symlinks into `~/.dotfiles/claude/`.
+
+A PostToolUse hook auto-commits and pushes `~/.dotfiles` whenever one of its files is edited. Never edit `~/.claude/CLAUDE.md` directly — verify the symlink is in place, then edit through the dotfiles path.
+
+New machine setup: `git clone git@github.com:Gipeio/dotfiles.git ~/.dotfiles && ~/.dotfiles/setup.sh`
+
 ## Behavior
 
 - Always ask for confirmation before: pushing, deleting files or branches, force-reset, dropping data.
