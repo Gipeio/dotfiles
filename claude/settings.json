@@ -1,3 +1,16 @@
 {
-  "theme": "dark-ansi"
+  "theme": "dark-ansi",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/peio/.dotfiles/claude/hooks/dotfiles-autopush.sh"
+          }
+        ]
+      }
+    ]
+  }
 }
