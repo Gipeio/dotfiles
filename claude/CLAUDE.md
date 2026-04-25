@@ -10,6 +10,16 @@ All written artifacts (code, comments, docs, READMEs, commit messages) must be i
 
 Follow current best practices for the stack in use. When in doubt, research and apply the most up-to-date conventions for the language and framework.
 
+## Code comments
+
+Code must be readable by someone who knows programming but not the specific stack. This means:
+
+- Every file gets a short header comment (1–3 lines) explaining its role in the system and how it connects to other files.
+- Inline comments only where the **why** is non-obvious: a hidden constraint, a subtle invariant, a surprising behavior.
+- Comments form a navigable trail — not a numbered list, but linked breadcrumbs. A reader can start anywhere and follow the thread through the codebase.
+- The entry point (e.g. `main.tsx`, `main.py`, `index.ts`) is the suggested starting point; the README root can mention it.
+- Never verbose. One precise sentence beats three vague ones.
+
 ## Commit messages
 
 Short, explicit, professional English. Describe what changed and why, not how.
