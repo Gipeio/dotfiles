@@ -86,3 +86,18 @@ Google Fonts : `Outfit` (wght 400–800) + `Inter` (wght 400–600).
 **Badges & Tags** — mêmes 3 styles que les boutons. Variantes : pill, avec dot indicateur, compteur numérique. Utilisés pour statuts (terminé/en cours/à venir) et catégories.
 
 **Inputs** — fond `--creme`, bordure `var(--border)`, radius 5px. 4 états : normal / focus (outline kaki) / erreur (outline rouge) / disabled (opacity 0.45). Types : text, textarea, select, checkbox, radio. Icônes inline supportées.
+
+### Iconographie — Style D Sharp
+
+Style choisi : **D — Sharp**. `stroke-width: 2`, `stroke-linecap: square`, `stroke-linejoin: miter`, `fill: none`. Utiliser `currentColor` pour hériter de la couleur du parent.
+
+| Taille | Usage               |
+|--------|---------------------|
+| 12px   | caption, tag        |
+| 16px ★ | bouton, label       |
+| 20px ★ | nav, liste          |
+| 24px   | headline, section   |
+| 32px   | empty state         |
+| 48px   | illustration        |
+
+viewBox de référence : `0 0 16 16` (adapter proportionnellement pour les autres tailles). Icônes SVG inline — pas de sprite, pas de font.
