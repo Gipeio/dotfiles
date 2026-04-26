@@ -42,7 +42,11 @@ New machine setup: `git clone git@github.com:Gipeio/dotfiles.git ~/.dotfiles && 
 
 ## Charte graphique personnelle
 
-Palette **FL4K** — choisie en avril 2026, inspirée du personnage Borderlands 3.
+Projet : `/atelier/graphic_chart/` — apprenant débutant en design, apprentissage par la pratique visuelle d'abord.
+
+### Palette — FL4K
+
+Inspirée du personnage Borderlands 3, choisie en avril 2026.
 
 | Rôle        | Variable CSS | Hex     |
 |-------------|--------------|---------|
@@ -52,4 +56,25 @@ Palette **FL4K** — choisie en avril 2026, inspirée du personnage Borderlands 
 | Fond sombre | `--noir`     | #222220 |
 | Secondaire  | `--orange`   | #D4692A |
 
-Projet charte : `/atelier/graphic_chart/`
+### Typographie — Outfit + Inter
+
+| Niveau  | Fonte  | Taille  | Graisse    |
+|---------|--------|---------|------------|
+| H1      | Outfit | 34px    | 800        |
+| H2      | Outfit | 18–17px | 700        |
+| Corps   | Inter  | 14px    | 400        |
+| Caption | Inter  | 12px    | 400        |
+| Label   | Inter  | 11px    | 600 · caps |
+
+Google Fonts : `Outfit` (wght 400–800) + `Inter` (wght 400–600).
+
+### Espacement
+
+| Paramètre | Valeur                                     |
+|-----------|--------------------------------------------|
+| Padding   | 16px                                       |
+| Gap       | 10px                                       |
+| Line-height | 1.55                                     |
+| Radius    | carte 8px · tag 4px · bouton 5px          |
+| Ombres    | aucune — bordure seule `rgba(74,88,48,.18)` |
+| Layout    | sidebar fixe + grille de cartes 3 colonnes |
