@@ -70,11 +70,19 @@ Google Fonts : `Outfit` (wght 400–800) + `Inter` (wght 400–600).
 
 ### Espacement
 
-| Paramètre | Valeur                                     |
-|-----------|--------------------------------------------|
-| Padding   | 16px                                       |
-| Gap       | 10px                                       |
-| Line-height | 1.55                                     |
-| Radius    | carte 8px · tag 4px · bouton 5px          |
-| Ombres    | aucune — bordure seule `rgba(74,88,48,.18)` |
-| Layout    | sidebar fixe + grille de cartes 3 colonnes |
+| Paramètre   | Valeur                                      |
+|-------------|---------------------------------------------|
+| Padding     | 16px                                        |
+| Gap         | 10px                                        |
+| Line-height | 1.55                                        |
+| Radius      | carte 8px · tag 4px · bouton 5px           |
+| Ombres      | aucune — bordure seule `rgba(74,88,48,.18)` |
+| Layout      | sidebar fixe + grille de cartes 3 colonnes  |
+
+### Composants
+
+**Boutons** — 3 styles : solid / outline / ghost. 4 tailles : sm (5px 10px) / md (8px 16px) / lg (12px 24px) / xl (16px 32px). 3 états : normal / hover (fond -20% luminosité) / disabled (opacity 0.38). Icônes SVG supportées. Variante pill (border-radius 999px).
+
+**Badges & Tags** — mêmes 3 styles que les boutons. Variantes : pill, avec dot indicateur, compteur numérique. Utilisés pour statuts (terminé/en cours/à venir) et catégories.
+
+**Inputs** — fond `--creme`, bordure `var(--border)`, radius 5px. 4 états : normal / focus (outline kaki) / erreur (outline rouge) / disabled (opacity 0.45). Types : text, textarea, select, checkbox, radio. Icônes inline supportées.
