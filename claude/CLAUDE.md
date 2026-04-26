@@ -112,3 +112,7 @@ viewBox de référence : `0 0 16 16` (adapter proportionnellement pour les autre
 **Pagination** — bouton 34×34px, radius 5px. Actif : bg kaki + texte crème. Variantes : complète (numéros + ellipsis) / prev-next / dots (carrousel). Désactivé : opacity 0.35.
 
 **Stepper** — cercle 32px. Fait : bg kaki + icône check. Actuel : border kaki + bg crème. À venir : border gris + texte muted. Trait entre steps : kaki si fait, sinon `--border`. Orientations : horizontal et vertical.
+
+### Favicon par défaut
+
+Pour toute nouvelle webapp générée : favicon = `fl4k/assets/blob-kaki.svg` (sauf si l'app possède son propre logo dans `fl4k/assets/`, auquel cas utiliser ce logo).
