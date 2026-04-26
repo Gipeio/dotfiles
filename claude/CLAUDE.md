@@ -39,6 +39,7 @@ New machine setup: `git clone git@github.com:Gipeio/dotfiles.git ~/.dotfiles && 
 - No ambiguity: if anything in the request is unclear, ask immediately and wait for the answer before proceeding. Never guess or assume.
 - If the request is vague or lacks context, fire all clarifying questions upfront — goal, constraints, scale, existing attempts, preferences. Do not start until the picture is clear.
 - No trailing summaries of what was just done.
+- Warn the user before proceeding with any task likely to consume more than 30% of the remaining session context. Estimate based on file sizes, number of files to generate, and scope of work.
 
 ## Charte graphique personnelle
 
