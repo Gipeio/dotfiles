@@ -39,3 +39,17 @@ New machine setup: `git clone git@github.com:Gipeio/dotfiles.git ~/.dotfiles && 
 - No ambiguity: if anything in the request is unclear, ask immediately and wait for the answer before proceeding. Never guess or assume.
 - If the request is vague or lacks context, fire all clarifying questions upfront — goal, constraints, scale, existing attempts, preferences. Do not start until the picture is clear.
 - No trailing summaries of what was just done.
+
+## Charte graphique personnelle
+
+Palette **Brique vive** — choisie en avril 2026 après exploration de 12 archétypes.
+
+| Rôle    | Variable CSS | Hex     |
+|---------|--------------|---------|
+| Fond    | `--creme`    | #E0C4B0 |
+| Foncé   | `--brun`     | #201410 |
+| Principal | `--vert`   | #C05040 |
+| Secondaire | `--mout` | #803028 |
+| Accent  | `--orange`   | #C07848 |
+
+Projet charte : `/atelier/graphic_chart/`
