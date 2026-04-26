@@ -42,14 +42,14 @@ New machine setup: `git clone git@github.com:Gipeio/dotfiles.git ~/.dotfiles && 
 
 ## Charte graphique personnelle
 
-Palette **Brique vive** — choisie en avril 2026 après exploration de 12 archétypes.
+Palette **FL4K** — choisie en avril 2026, inspirée du personnage Borderlands 3.
 
-| Rôle    | Variable CSS | Hex     |
-|---------|--------------|---------|
-| Fond    | `--creme`    | #E0C4B0 |
-| Foncé   | `--brun`     | #201410 |
-| Principal | `--brique`   | #C05040 |
-| Secondaire | `--bordeaux` | #803028 |
-| Accent  | `--orange`   | #C07848 |
+| Rôle        | Variable CSS | Hex     |
+|-------------|--------------|---------|
+| Ancre       | `--kaki`     | #4A5830 |
+| Accent      | `--rouge`    | #C84020 |
+| Fond clair  | `--creme`    | #FAEBCC |
+| Fond sombre | `--noir`     | #222220 |
+| Secondaire  | `--orange`   | #D4692A |
 
 Projet charte : `/atelier/graphic_chart/`
