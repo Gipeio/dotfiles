@@ -48,15 +48,27 @@ Projet : `/atelier/graphic_chart/` — apprenant débutant en design, apprentiss
 
 ### Palette — FL4K
 
-Inspirée du personnage Borderlands 3, choisie en avril 2026.
+Inspirée du personnage Borderlands 3. Palette Papier & Encre (clair) + 2 Couleurs (sombre), arrêtée en avril 2026.
 
-| Rôle        | Variable CSS | Hex     |
-|-------------|--------------|---------|
-| Ancre       | `--kaki`     | #4A5830 |
-| Accent      | `--rouge`    | #C84020 |
-| Fond clair  | `--creme`    | #FAEBCC |
-| Fond sombre | `--noir`     | #222220 |
-| Secondaire  | `--orange`   | #D4692A |
+**Mode clair — Papier & Encre**
+
+| Rôle          | Variable CSS  | Hex     |
+|---------------|---------------|---------|
+| Vert forêt    | `--kaki`      | #3A5020 |
+| Bordeaux      | `--rouge`     | #8B1A10 |
+| Fond papier   | `--creme`     | #F2EDE0 |
+| Surface       | `--surface`   | #E4DCC8 |
+| Encre         | `--noir`      | #1A1208 |
+
+**Mode sombre — 2 Couleurs**
+
+| Rôle          | Variable CSS  | Hex     |
+|---------------|---------------|---------|
+| Mousse        | `--kaki`      | #4A5830 |
+| Bordeaux      | `--rouge`     | #8B1A10 |
+| Fond          | `--noir`      | #0A0A08 |
+| Surface       | `--surface`   | #141412 |
+| Texte         | `--creme`     | #E8E8D8 |
 
 ### Typographie — Outfit + Inter
 
