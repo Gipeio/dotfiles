@@ -118,9 +118,9 @@ viewBox de référence : `0 0 16 16` (adapter proportionnellement pour les autre
 
 ### Navigation
 
-**Tabs** — 4 styles : souligné (border-bottom 2px kaki) / pill (bg kaki actif) / bloc (bg rgba kaki) / vertical (border-left kaki). Variante avec icône + compteur. Sur fond sombre : border-bottom rouge. Inactif toujours `#9A7848`.
+**Tabs** — 4 styles : souligné (border-bottom 2px kaki) / pill (bg kaki actif) / bloc (bg rgba kaki) / vertical (border-left kaki). Variante avec icône + compteur. Sur fond sombre : border-bottom rouge. Inactif toujours `#9A8860`.
 
-**Breadcrumb** — parent `#9A7848`, actuel `--kaki` font-weight 600. Séparateur chevron SVG ou slash. Variante pill (bg crème + border). Pas de noir pour l'état actuel.
+**Breadcrumb** — parent `#9A8860`, actuel `--kaki` font-weight 600. Séparateur chevron SVG ou slash. Variante pill (bg crème + border). Pas de noir pour l'état actuel.
 
 **Pagination** — bouton 34×34px, radius 5px. Actif : bg kaki + texte crème. Variantes : complète (numéros + ellipsis) / prev-next / dots (carrousel). Désactivé : opacity 0.35.
 
