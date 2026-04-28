@@ -90,7 +90,7 @@ Google Fonts : `Outfit` (wght 400–800) + `Inter` (wght 400–600).
 | Gap         | 10px                                        |
 | Line-height | 1.55                                        |
 | Radius      | carte 8px · tag 4px · bouton 5px           |
-| Ombres      | aucune — bordure seule `rgba(74,88,48,.18)` |
+| Ombres      | aucune — bordure seule `rgba(26,18,8,.18)`  |
 | Layout      | sidebar fixe + grille de cartes 3 colonnes  |
 
 ### Composants
