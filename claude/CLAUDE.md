@@ -41,6 +41,7 @@ New machine setup: `git clone git@github.com:Gipeio/dotfiles.git ~/.dotfiles && 
 - No trailing summaries of what was just done.
 - Warn the user before proceeding with any task likely to consume more than 5% of the remaining session context. Estimate based on file sizes, number of files to generate, and scope of work.
 - For any visual addition or modification in a webapp (colors, fonts, spacing, icons, components): always follow the FL4K graphic charter from `/atelier/fl4k/`. Use `colors_and_type.css` and the `preview/` HTML files as source of truth. Never invent colors or styles outside the palette.
+- When asked to apply the FL4K graphic charter to a new webapp (or start building one): open `/atelier/fl4k/preview/style-templates.html` (`\\wsl.localhost\Ubuntu\atelier\fl4k\preview\style-templates.html` on Windows), then ask the user which of the 7 templates (T01–T07) they want to base the app on before writing any code.
 
 ## Charte graphique personnelle
 
