@@ -40,93 +40,17 @@ New machine setup: `git clone git@github.com:Gipeio/dotfiles.git ~/.dotfiles && 
 - If the request is vague or lacks context, fire all clarifying questions upfront — goal, constraints, scale, existing attempts, preferences. Do not start until the picture is clear.
 - No trailing summaries of what was just done.
 - Warn the user before proceeding with any task likely to consume more than 5% of the remaining session context. Estimate based on file sizes, number of files to generate, and scope of work.
-- For any visual addition or modification in a webapp (colors, fonts, spacing, icons, components): always follow the FL4K graphic charter from `/atelier/fl4k/`. Use `colors_and_type.css` and the `preview/` HTML files as source of truth. Never invent colors or styles outside the palette.
-- When asked to apply the FL4K graphic charter to a new webapp (or start building one): open both `/atelier/fl4k/preview/style-templates.html` and `/atelier/fl4k/preview/style-templates-retro.html` (Windows: `\\wsl.localhost\Ubuntu\atelier\fl4k\preview\style-templates.html` and `\\wsl.localhost\Ubuntu\atelier\fl4k\preview\style-templates-retro.html`), then ask the user which palette (FL4K classique ou Rétro 70s) AND which of the 7 templates (T01–T07) they want before writing any code.
+- For any visual addition or modification in a webapp (colors, fonts, spacing, icons, components): use the **Glaze** design system at `/atelier/glaze/`. The active palette is **Garance** — source of truth is `/atelier/glaze/src/palettes/presets.ts`. Never invent colors or styles outside this palette.
 
 ## Charte graphique personnelle
 
-Projet : `/atelier/graphic_chart/` — apprenant débutant en design, apprentissage par la pratique visuelle d'abord.
+Design system : `/atelier/glaze/` — palette-driven, Garance is the active preset.
 
-### Palette — FL4K
+### Palette — Garance
 
-Inspirée du personnage Borderlands 3. Palette Papier & Encre (clair) + 2 Couleurs (sombre), arrêtée en avril 2026.
-
-**Mode clair — Papier & Encre**
-
-| Rôle          | Variable CSS  | Hex     |
-|---------------|---------------|---------|
-| Vert forêt    | `--kaki`      | #3A5020 |
-| Bordeaux      | `--rouge`     | #8B1A10 |
-| Fond papier   | `--creme`     | #F2EDE0 |
-| Surface       | `--surface`   | #E4DCC8 |
-| Encre         | `--noir`      | #1A1208 |
-
-**Mode sombre — 2 Couleurs**
-
-| Rôle          | Variable CSS  | Hex     |
-|---------------|---------------|---------|
-| Mousse        | `--kaki`      | #4A5830 |
-| Bordeaux      | `--rouge`     | #8B1A10 |
-| Fond          | `--noir`      | #0A0A08 |
-| Surface       | `--surface`   | #141412 |
-| Texte         | `--creme`     | #E8E8D8 |
-
-### Typographie — Outfit + Inter
-
-| Niveau  | Fonte  | Taille  | Graisse    |
-|---------|--------|---------|------------|
-| H1      | Outfit | 34px    | 800        |
-| H2      | Outfit | 18–17px | 700        |
-| Corps   | Inter  | 14px    | 400        |
-| Caption | Inter  | 12px    | 400        |
-| Label   | Inter  | 11px    | 600 · caps |
-
-Google Fonts : `Outfit` (wght 400–800) + `Inter` (wght 400–600).
-
-### Espacement
-
-| Paramètre   | Valeur                                      |
-|-------------|---------------------------------------------|
-| Padding     | 16px                                        |
-| Gap         | 10px                                        |
-| Line-height | 1.55                                        |
-| Radius      | carte 8px · tag 4px · bouton 5px           |
-| Ombres      | aucune — bordure seule `rgba(26,18,8,.18)`  |
-| Layout      | sidebar fixe + grille de cartes 3 colonnes  |
-
-### Composants
-
-**Boutons** — 3 styles : solid / outline / ghost. 4 tailles : sm (5px 10px) / md (8px 16px) / lg (12px 24px) / xl (16px 32px). 3 états : normal / hover (fond -20% luminosité) / disabled (opacity 0.38). Icônes SVG supportées. Variante pill (border-radius 999px).
-
-**Badges & Tags** — mêmes 3 styles que les boutons. Variantes : pill, avec dot indicateur, compteur numérique. Utilisés pour statuts (terminé/en cours/à venir) et catégories.
-
-**Inputs** — fond `--creme`, bordure `var(--border)`, radius 5px. 4 états : normal / focus (outline kaki) / erreur (outline rouge) / disabled (opacity 0.45). Types : text, textarea, select, checkbox, radio. Icônes inline supportées.
-
-### Iconographie — Style D Sharp
-
-Style choisi : **D — Sharp**. `stroke-width: 2`, `stroke-linecap: square`, `stroke-linejoin: miter`, `fill: none`. Utiliser `currentColor` pour hériter de la couleur du parent.
-
-| Taille | Usage               |
-|--------|---------------------|
-| 12px   | caption, tag        |
-| 16px ★ | bouton, label       |
-| 20px ★ | nav, liste          |
-| 24px   | headline, section   |
-| 32px   | empty state         |
-| 48px   | illustration        |
-
-viewBox de référence : `0 0 16 16` (adapter proportionnellement pour les autres tailles). Icônes SVG inline — pas de sprite, pas de font.
-
-### Navigation
-
-**Tabs** — 4 styles : souligné (border-bottom 2px kaki) / pill (bg kaki actif) / bloc (bg rgba kaki) / vertical (border-left kaki). Variante avec icône + compteur. Sur fond sombre : border-bottom rouge. Inactif toujours `#9A8860`.
-
-**Breadcrumb** — parent `#9A8860`, actuel `--kaki` font-weight 600. Séparateur chevron SVG ou slash. Variante pill (bg crème + border). Pas de noir pour l'état actuel.
-
-**Pagination** — bouton 34×34px, radius 5px. Actif : bg kaki + texte crème. Variantes : complète (numéros + ellipsis) / prev-next / dots (carrousel). Désactivé : opacity 0.35.
-
-**Stepper** — cercle 32px. Fait : bg kaki + icône check. Actuel : border kaki + bg crème. À venir : border gris + texte muted. Trait entre steps : kaki si fait, sinon `--border`. Orientations : horizontal et vertical.
-
-### Favicon par défaut
-
-Pour toute nouvelle webapp générée : favicon = `fl4k/assets/blob-kaki.svg` (sauf si l'app possède son propre logo dans `fl4k/assets/`, auquel cas utiliser ce logo).
+| Rôle    | Token CSS     | Hex     |
+|---------|---------------|---------|
+| Fond    | `--t-bg`      | #EEE2DE |
+| Surface | `--t-surface` | #EA906C |
+| Accent  | `--t-accent`  | #B31312 |
+| Texte   | `--t-text`    | #2B2A4C |
