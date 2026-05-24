@@ -71,7 +71,7 @@ Every webapp gets an animated boot screen. It is **not optional** — implement 
 
 State tracked via `sessionStorage` key `<appname>:booted`. Scan on refresh and page switch is wired in the app's entry point alongside the template/route change listener.
 
-A `[ REPLAY BOOT ]` button (fixed, bottom-right) is included in **every webapp** by default. It clears the session flag and replays the full boot sequence.
+A `[ REBOOT ]` button (fixed, bottom-right) is included in **every webapp** by default. It clears the session flag and replays the full boot sequence.
 
 ## Charte graphique personnelle
 
