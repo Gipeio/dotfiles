@@ -42,6 +42,35 @@ New machine setup: `git clone git@github.com:Gipeio/dotfiles.git ~/.dotfiles && 
 - Warn the user before proceeding with any task likely to consume more than 5% of the remaining session context. Estimate based on file sizes, number of files to generate, and scope of work.
 - For any visual addition or modification in a webapp (colors, fonts, spacing, icons, components): use the **Glaze** design system at `/atelier/glaze/`. The active palette is **Garance** — source of truth is `/atelier/glaze/src/palettes/presets.ts`. Never invent colors or styles outside this palette.
 
+## Boot screen (webapps)
+
+Every webapp gets an animated boot screen implemented in `src/boot/` (or equivalent). It is **not optional** — implement it automatically when scaffolding or setting up a new webapp.
+
+### Parameters to adapt per project
+- **App name** — used in the terminal boot messages (e.g. `Starting <AppName> Runtime...`)
+- **ASCII art** — box-drawing block letters of the app name, shown centered during the logo reveal phase
+- **Logo** — the app's pixel-art or SVG logo, displayed below the ASCII art
+
+### Three phases
+1. **Terminal boot** — dmesg-style lines then systemd-style `[  OK  ]` service starts, referencing the app's actual subsystems. Web Audio API noise bursts per line (subtle, realistic).
+2. **Logo reveal** — ASCII art fades in centered, lifts slightly, pixel/SVG logo fades in below. Two-tone sine chime on entry.
+3. **Scan dismiss** — overlay clipped from top in `steps(6)` over 640ms (stepped, mechanical feel). Filtered noise burst per step. A red `--t-accent` scan bar marks the clip boundary.
+
+### Appearance rules
+| Situation | Behavior |
+|---|---|
+| New tab | Full boot (phases 1 → 2 → 3) |
+| Browser closed → reopened | Full boot |
+| Private / incognito session | Full boot |
+| Page refresh (F5) in same tab | Scan only (phase 3) |
+| In-app navigation / page switch | Scan only (phase 3) |
+| Same tab, no reload | Nothing (already booted) |
+| Duplicated tab | Nothing (sessionStorage is copied) |
+
+State tracked via `sessionStorage` key `<appname>:booted`. Scan on refresh and page switch is wired in the app's entry point alongside the template/route change listener.
+
+A `[ REPLAY BOOT ]` button (fixed, bottom-right) is included **in this Glaze repo only** for testing. Do not add it to production apps unless explicitly requested.
+
 ## Charte graphique personnelle
 
 Design system : `/atelier/glaze/` — palette-driven, Garance is the active preset.
