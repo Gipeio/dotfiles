@@ -44,7 +44,9 @@ New machine setup: `git clone git@github.com:Gipeio/dotfiles.git ~/.dotfiles && 
 
 ## Boot screen (webapps)
 
-Every webapp gets an animated boot screen implemented in `src/boot/` (or equivalent). It is **not optional** — implement it automatically when scaffolding or setting up a new webapp.
+Every webapp gets an animated boot screen. It is **not optional** — implement it automatically when scaffolding or setting up a new webapp.
+
+**Canonical implementation**: `/atelier/glaze/src/boot/` — copy and adapt it. The module is self-contained (`index.ts` + `style.css`). Entry-point wiring lives in the app's `main.ts` (see `/atelier/glaze/src/main.ts`).
 
 ### Parameters to adapt per project
 - **App name** — used in the terminal boot messages (e.g. `Starting <AppName> Runtime...`)
