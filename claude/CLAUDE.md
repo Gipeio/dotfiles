@@ -55,7 +55,7 @@ Every webapp gets an animated boot screen. It is **not optional** — implement 
 
 ### Three phases
 1. **Terminal boot** — dmesg-style lines then systemd-style `[  OK  ]` service starts, referencing the app's actual subsystems. Web Audio API noise bursts per line (subtle, realistic). **Write exactly 22 lines** matching the structure of the Glaze reference (`/atelier/glaze/src/boot/index.ts` → `LINES` array): 7 dmesg-style `tag: 'none'` lines (hardware/kernel init), then 15 systemd-style lines alternating `tag: 'wait'` / `tag: 'ok'` pairs, each referencing a real subsystem of the app (e.g. auth service, DB connection, router, API client). Keep timestamps and BIOS/CPU/memory lines generic; customize only the service names.
-2. **Logo reveal** — ASCII art fades in centered, lifts slightly, pixel/SVG logo fades in below. Two-tone sine chime on entry.
+2. **Logo reveal** — ASCII art appears at screen center (`translateY(86px)` from its flex-group position), then animates to its final position (`translateY(0)`, `420ms cubic-bezier(0.2,0,0.2,1)`). Gap between ASCII and logo: `12px`. Logo size: `160×160px`. Two-tone sine chime on entry. **These values are locked — source of truth is `/atelier/depot/src/boot/`.**
 3. **Scan dismiss** — overlay clipped from top in `steps(6)` over 640ms (stepped, mechanical feel). Filtered noise burst per step. A red `--t-accent` scan bar marks the clip boundary.
 
 ### Appearance rules
