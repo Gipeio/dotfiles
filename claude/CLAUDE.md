@@ -75,9 +75,18 @@ A `[ REBOOT ]` button (fixed, bottom-right) is included in **every webapp** by d
 
 ## Charte graphique personnelle
 
-Design system : `/atelier/glaze/` — palette-driven, Garance is the active preset.
+Design system : `/atelier/glaze/` — deux modes de palette.
 
-### Palette — Garance
+### Mode sombre (défaut) — Cassette
+
+| Rôle    | Token CSS     | Hex     |
+|---------|---------------|---------|
+| Fond    | `--t-bg`      | #1A1912 |
+| Surface | `--t-surface` | #4E6851 |
+| Accent  | `--t-accent`  | #B83A2D |
+| Texte   | `--t-text`    | #DCC9A9 |
+
+### Mode clair — Garance
 
 | Rôle    | Token CSS     | Hex     |
 |---------|---------------|---------|
