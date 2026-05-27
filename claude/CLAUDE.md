@@ -40,7 +40,7 @@ New machine setup: `git clone git@github.com:Gipeio/dotfiles.git ~/.dotfiles && 
 - If the request is vague or lacks context, fire all clarifying questions upfront — goal, constraints, scale, existing attempts, preferences. Do not start until the picture is clear.
 - No trailing summaries of what was just done.
 - Warn the user before proceeding with any task likely to consume more than 5% of the remaining session context. Estimate based on file sizes, number of files to generate, and scope of work.
-- For any visual addition or modification in a webapp (colors, fonts, spacing, icons, components): use the **Glaze** design system at `/atelier/glaze/`. The active palette is **Garance** — source of truth is `/atelier/glaze/src/palettes/presets.ts`. Never invent colors or styles outside this palette.
+- For any visual addition or modification in a webapp (colors, fonts, spacing, icons, components): use the **Glaze** design system at `/atelier/glaze/`. Two modes — **mode sombre (défaut) : palette Cassette** / **mode clair : palette Garance** — source of truth is `/atelier/glaze/src/palettes/presets.ts`. Never invent colors or styles outside these palettes.
 
 ## Boot screen (webapps)
 
