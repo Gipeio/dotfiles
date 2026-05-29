@@ -20,6 +20,23 @@ Code must be readable by someone who knows programming but not the specific stac
 - The entry point (e.g. `main.tsx`, `main.py`, `index.ts`) is the suggested starting point; the README root can mention it.
 - Never verbose. One precise sentence beats three vague ones.
 
+## README structure
+
+Every project README must include a **Tech Stack** section. It must list, in a table:
+
+| Column | What to put |
+|---|---|
+| Language | Name + major version |
+| Framework | Name + major version, or "none" |
+| Build tool | e.g. Vite, webpack, esbuild, cargo |
+| Package manager | npm, pnpm, cargo, pip, etc. |
+| Output type | Static SPA, SSR, CLI binary, library, etc. |
+| Dev server port | If applicable |
+| Testing | Framework name, or "none" |
+| Design system | e.g. Glaze — Cassette palette, or "none" |
+
+Follow the table with a one-liner noting any major constraint (no framework, no ORM, etc.) and the entry point file.
+
 ## Commit messages
 
 Short, explicit, professional English. Describe what changed and why, not how.
