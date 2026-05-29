@@ -70,9 +70,12 @@ Every webapp gets an animated boot screen. It is **not optional** — implement 
 - **ASCII art** — box-drawing block letters of the app name, shown centered during the logo reveal phase
 - **Logo** — the app's pixel-art or SVG logo, displayed below the ASCII art
 
+### Visual style
+The boot overlay has an LCD scanlines layer (`::before` pseudo-element, `repeating-linear-gradient` every 3px, 5% `--t-text` tint on 1px stripes — same technique as `t01-ecran`). This sits above all content (`z-index: 100`) with `pointer-events: none`.
+
 ### Three phases
 1. **Terminal boot** — dmesg-style lines then systemd-style `[  OK  ]` service starts, referencing the app's actual subsystems. Web Audio API noise bursts per line (subtle, realistic). **Write exactly 22 lines** matching the structure of the Glaze reference (`/atelier/glaze/src/boot/index.ts` → `LINES` array): 7 dmesg-style `tag: 'none'` lines (hardware/kernel init), then 15 systemd-style lines alternating `tag: 'wait'` / `tag: 'ok'` pairs, each referencing a real subsystem of the app (e.g. auth service, DB connection, router, API client). Keep timestamps and BIOS/CPU/memory lines generic; customize only the service names.
-2. **Logo reveal** — ASCII art appears at screen center (`translateY(86px)` from its flex-group position), then animates to its final position (`translateY(0)`, `420ms cubic-bezier(0.2,0,0.2,1)`). Gap between ASCII and logo: `12px`. Logo size: `160×160px`. Two-tone sine chime on entry. **These values are locked — source of truth is `/atelier/glaze/src/boot/`.**
+2. **Logo reveal** — ASCII art appears at screen center (`translateY(86px)` from its flex-group position), then animates to its final position (`translateY(0)`, `420ms cubic-bezier(0.2,0,0.2,1)`). ASCII color: `--t-surface` (green in Cassette, **not** `--t-accent`). Gap between ASCII and logo: `12px`. Logo size: `160×160px`. Two-tone sine chime on entry. **These values are locked — source of truth is `/atelier/glaze/src/boot/`.**
 3. **Scan dismiss** — overlay clipped from top in `steps(6)` over 640ms (stepped, mechanical feel). Filtered noise burst per step. A red `--t-accent` scan bar marks the clip boundary.
 
 ### Appearance rules
