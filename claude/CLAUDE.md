@@ -90,6 +90,92 @@ State tracked via `sessionStorage` key `<appname>:booted`. Scan on refresh and p
 
 A `[ REBOOT ]` button (fixed, bottom-right) is included in **every webapp** by default. It clears the session flag and replays the full boot sequence.
 
+## Deploying an app to warehouse
+
+Full checklist: `/atelier/warehouse/deploy-apps.md`. Summary below.
+
+### App-side requirements
+- `Dockerfile` at the repo root
+- App binds on `0.0.0.0:<port>` (not localhost)
+- All config via environment variables, no hardcoded paths
+
+### Dockerfile — static SPA (Vite / any build-to-dist tool)
+
+```dockerfile
+FROM node:alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 8080
+```
+
+Always add an `nginx.conf` next to the Dockerfile:
+
+```nginx
+server {
+    listen 8080;
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+```
+
+And a `.dockerignore`:
+```
+node_modules
+dist
+.git
+.env*
+```
+
+### CI/CD — GitHub Actions self-hosted runner
+
+The warehouse server runs a self-hosted runner (registered via Ansible). Every app repo gets a workflow at `.github/workflows/deploy.yml`:
+
+```yaml
+name: Deploy to warehouse
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, warehouse]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync source to compose directory
+        run: |
+          rsync -a --delete \
+            --exclude=node_modules \
+            --exclude=.git \
+            --exclude=dist \
+            "$GITHUB_WORKSPACE/" /opt/warehouse/<appname>/
+
+      - name: Rebuild and restart container
+        run: |
+          cd /opt/warehouse
+          docker compose build <appname>
+          docker compose up -d --no-deps <appname>
+```
+
+### Warehouse-side additions (per app)
+1. Add service in `ansible/files/docker-compose.yml` with `build: ./<appname>`
+2. Add Ansible task in `compose` role to sync the source: `ansible.posix.synchronize src=/atelier/<appname>/ dest={{ compose_dir }}/<appname>/`
+3. Add matcher in `ansible/files/caddy/Caddyfile` → `<appname>.warehouse.dedyn.io`
+4. Reserve a port in `/atelier/warehouse/ports.md`
+5. Run the playbook: `cd /atelier/warehouse/ansible && infisical run --domain https://eu.infisical.com/api --env prod -- ansible-playbook site.yml`
+
 ## Charte graphique personnelle
 
 Design system : `/atelier/glaze/` — deux modes de palette.
