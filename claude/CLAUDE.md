@@ -90,6 +90,64 @@ State tracked via `sessionStorage` key `<appname>:booted`. Scan on refresh and p
 
 A `[ REBOOT ]` button (fixed, bottom-right) is included in **every webapp** by default. It clears the session flag and replays the full boot sequence.
 
+## Webapp icons
+
+Every webapp needs three icon assets wired into `index.html`. Never reuse the source logo SVG directly for the favicon — its viewBox is designed for the boot screen, not for small display.
+
+### Files to create in `public/`
+
+| File | Purpose | Size |
+|---|---|---|
+| `favicon.svg` | Browser tab icon | SVG with tight viewBox |
+| `apple-touch-icon.png` | Bookmark / home screen icon | 180×180 PNG |
+
+The source logo SVG (e.g. from `glaze/logos/<app>/main.svg`) is **not** used as the favicon directly. It stays as-is for the boot screen (`LOGO_SRC`).
+
+### favicon.svg — tight viewBox
+
+Calculate the bounding box of the actual drawn content (ignore empty canvas space). Add ~8px padding on all sides and make the viewBox square.
+
+Example: content spanning x −48→48, y 2→96 → viewBox `"-56 -7 112 112"`.
+
+The SVG body is a verbatim copy of the source logo; only the root `<svg>` attributes change:
+```svg
+<svg width="112" height="112" viewBox="<tight-box>" xmlns="http://www.w3.org/2000/svg">
+  <!-- logo paths copied verbatim -->
+</svg>
+```
+
+### apple-touch-icon.png — generate via Playwright
+
+`playwright-core` is available in every Node project. Use it to render `favicon.svg` to a 180×180 PNG:
+
+```js
+const { chromium } = require('./node_modules/playwright-core');
+const fs = require('fs');
+(async () => {
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
+  await page.setViewportSize({ width: 180, height: 180 });
+  const svg = fs.readFileSync('./public/favicon.svg', 'utf8');
+  await page.setContent(`<!DOCTYPE html><html><head><style>
+    * { margin:0; padding:0; }
+    body { width:180px; height:180px; background:transparent; display:flex; align-items:center; justify-content:center; }
+    svg { width:180px; height:180px; }
+  </style></head><body>${svg}</body></html>`);
+  fs.writeFileSync('./public/apple-touch-icon.png', await page.screenshot({ type:'png', omitBackground:true }));
+  await browser.close();
+})();
+```
+
+### index.html wiring
+
+```html
+<title><appname></title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+```
+
+The `<title>` must match the app's warehouse subdomain (e.g. `warehouse`, `desktop`, `radio`).
+
 ## Deploying an app to warehouse
 
 Full checklist: `/atelier/warehouse/deploy-apps.md`. Summary below.
