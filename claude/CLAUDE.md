@@ -49,6 +49,20 @@ A PostToolUse hook auto-commits and pushes `~/.dotfiles` whenever one of its fil
 
 New machine setup: `git clone git@github.com:Gipeio/dotfiles.git ~/.dotfiles && ~/.dotfiles/setup.sh`
 
+## Warehouse — Infrastructure as Code
+
+All changes to the warehouse server must be done as IaC. Never configure the server via direct API calls, CLI commands, or manual UI interaction that isn't tracked in the repository.
+
+| What | IaC mechanism |
+|---|---|
+| Authentik config (providers, apps, flows, OAuth sources, outpost) | Blueprint YAML in `ansible/files/authentik/blueprints/` |
+| Docker services | `ansible/files/docker-compose.yml` |
+| Reverse proxy / routing | `ansible/files/caddy/Caddyfile` |
+| Secrets | Infisical, injected via `ansible/roles/compose/templates/.env.j2` |
+| System provisioning | Ansible roles in `ansible/roles/` |
+
+If a change was made via direct API for debugging purposes, transcribe it into the appropriate IaC file immediately before moving on. Deploy via `cd /atelier/warehouse/ansible && infisical run --domain https://eu.infisical.com/api --env prod -- ansible-playbook site.yml`.
+
 ## Behavior
 
 - Always ask for confirmation before: pushing, deleting files or branches, force-reset, dropping data.
