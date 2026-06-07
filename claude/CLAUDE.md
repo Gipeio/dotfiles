@@ -107,6 +107,31 @@ State tracked via `sessionStorage` key `<appname>:booted`. Scan on refresh and p
 
 A `[ REBOOT ]` button (fixed, bottom-right) is included in **every webapp** by default. It clears the session flag and replays the full boot sequence.
 
+## User menu (webapps)
+
+Every authenticated webapp gets a user menu in the topbar, top-right. It is **not optional** — implement it automatically alongside authentication.
+
+### Behaviour
+- A button showing `● displayName` (green dot + username, Silkscreen font)
+- Clicking opens a dropdown panel (position: fixed, calculated from button's bounding rect) with:
+  - `USER / EMAIL` info rows (same visual language as the desktop auth-widget)
+  - A `[ SIGN OUT ]` button in `--t-accent` red
+- Clicking outside closes the panel
+
+### Auth strategy — two patterns
+
+| Auth type | How to get user data | Sign-out |
+|---|---|---|
+| **OAuth2 / JWT** (garden-style) | `auth.me()` response, already resolved at boot | `DELETE /api/auth/session` → redirect to `/api/auth/login` |
+| **Outpost / forward_auth** (desktop-style) | `window.__ak_user` injected by nginx | Redirect to `https://auth.warehouse.dedyn.io/if/flow/default-invalidation-flow/?next=/` |
+
+### Implementation reference
+- Garden: `/atelier/garden/web/src/components/user-menu.ts` — OAuth2/JWT pattern
+- Desktop: `/atelier/desktop/src/auth-widget/index.ts` — outpost pattern
+
+### CSS tokens used
+Same palette as the rest of the app (`--t-surface` for the dot glow, `--t-accent` for sign-out, `--t-muted` for labels). Panel background: `rgba(10, 12, 8, 0.97)` with a `--t-surface` gradient beam at the top.
+
 ## Webapp icons
 
 Every webapp needs three icon assets wired into `index.html`. Never reuse the source logo SVG directly for the favicon — its viewBox is designed for the boot screen, not for small display.
